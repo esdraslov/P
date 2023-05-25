@@ -1,0 +1,25 @@
+{
+  "name": "p-language",
+  "displayName": "P language",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.78.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "p",
+      "aliases": ["p", "p"],
+      "extensions": [".p"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "p",
+      "scopeName": "main.p",
+      "path": "./syntaxes/p.tmLanguage.json"
+    }]
+  }
+}

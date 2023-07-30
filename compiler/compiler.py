@@ -7,10 +7,8 @@ fn = args.file
 
 try:
     f = open(fn, "r")
-    new_f = open(fn.replace('.p', '.cs'), "w")
-    text: str
-    if f.readlines().__contains__('console.write'):
-        text = f.readlines().replace('console.write','Console.Write')
+    new_f = open("compiled.unk", "w")
+    text: str = f.read()
     new_f.write(text)
 except:
     print("the file doens't exist in local")

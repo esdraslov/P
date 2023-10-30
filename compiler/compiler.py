@@ -7,7 +7,7 @@ fn = args.file
 
 try:
     f = open(fn, "r")
-    new_f = open("compiled.unk", "w")
+    new_f = open("compiled.pc", "w")
     text: str = f.read()
     new_f.write(text)
 except:

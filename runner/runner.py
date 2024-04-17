@@ -28,10 +28,14 @@ try:
                 if k == "EXIT":
                     sys.exit(0)
                 if k == "GET":
-                    print(RAMA[int(number, base=0)])
+                    print(RAMA[int(number)])
                 if k == "oRAM":
-                    RAMA.pop(int(number, base=0))
+                    RAMA.pop(int(number))
+except Exception as e:
+    raise f"P: [Expection] Exception: {e}"
+except TypeError as te:
+    raise f"P: [TypeError] TypeError: {te}"
+except EOFError as eofe:
+    raise f"P: [EOFError] Exception: {eofe}"
 except:
-    print("a error happens while uncoding the file")
-finally:
-    print("the action/program ended")
+    raise "P: [Unknow exception] Unknow: Check your code, just it is possible to fix"

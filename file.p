@@ -1,3 +1,4 @@
-app = import("system.default")
-
-app.write("hello world!")
+SET 0010
+PUT
+RAM 0010
+GET 0001

@@ -29,10 +29,10 @@ try:
                     sys.exit(0) # Exit successfully
                 elif act == "GET":
                     if number >= len(RAMA): # Check if is out of index
-                        print("Error [P:RAMIndex]: out of index")
+                        print("Error [P::RAMIndex]: out of index")
                         sys.exit(1)
                     else:
-                        print(RAMA[number]) # print an integer from RAM
+                        print(RAMA[number]) # print an integer from RAM (broken)
                 elif act == "oRAM":
                     RAMA.pop(int(number)) # remove an integer from RAM
                 elif act == "PNT":

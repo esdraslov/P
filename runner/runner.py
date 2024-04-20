@@ -60,8 +60,8 @@ try:
 except Exception as error:
     if not E:
         print("Error [P::Exeception]: %s" % error)
-        sys.exit(1)
+    sys.exit(1)
 except:
     if not E:
         print("Error [P::UnknownOrKnown]")
-        sys.exit(1)
+    sys.exit(1)

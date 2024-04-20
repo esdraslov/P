@@ -11,7 +11,6 @@ try:
 
     for line in lines:
         kw = line.split(" ")
-        l1 = 2
         number = 0b00000000 # P works in 1 byte every number of bits
         RAMA = []
         SETV = number
@@ -22,9 +21,9 @@ try:
                 if act == "SET":
                     SETV = number
                 if act == "RAM":
-                    print(RAMA[0])
+                    RAMA.append(number)
                 if act == "PUT":
-                    print(SETV)
+                    print(SETV) # Aways need to be 00000000 (0) bits as parameter
                 if act == "EXIT":
                     sys.exit(0)
                 if act == "GET":

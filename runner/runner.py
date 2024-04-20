@@ -14,7 +14,7 @@ try:
         number = 0b00000000 # P works in 1 byte every number of bits
         RAMA = [] # RAM (arrays is the RAM, because array is directed separeted in RAM)
         SETV = number # Number for some actions (multi-parameters)
-        PNTV = 0b00000000 # The pointer of SETV, RAMA or themself
+        PNTV = "" # The pointer of SETV, RAMA or themself
         act = "" # action
         for i, k in enumerate(kw):
             if i % 2 == 1: # 2 % 2 != 0 so then ins't a keyword; 4 % 2 == 0 so then it's a keyword
@@ -37,11 +37,20 @@ try:
                     RAMA.pop(int(number)) # remove an integer from RAM
                 elif act == "PNT":
                     if SETV == 0b00000000:
-                        PNTV = number # Point to themself
+                        PNTV = "" # Point to themself
                     elif SETV == 0b00000001:
-                        PNTV = RAMA[number] # Point to RAMA
+                        PNTV = "RAMA" # Point to RAMA
                     else:
-                        PNTV = SETV # Point to SETV
+                        PNTV = "SETV" # Point to SETV
+                elif act == "sPNT":
+                    if PNTV == "RAMA":
+                        RAMA.insert(number, SETV)
+                    if PNTV == "SETV":
+                        SETV = number
+                    if PNTV == "":
+                        PNTV == number
+                elif act == "kPNT":
+                    PNTV = number
                 else:
                     raise Exception(f"Unknown action [{act}], please check the code and try again, remember, all actions is uppercase written")
             else:

@@ -8,6 +8,7 @@ args = parse.parse_args()
 try:
     compiled = open(args.file, "r")
     lines: list = compiled.readlines()
+    E = False
 
     for line in lines:
         kw = line.split(" ") # Every single keyword
@@ -30,6 +31,7 @@ try:
                 elif act == "GET":
                     if number >= len(RAMA): # Check if is out of index
                         print("Error [P::RAMIndex]: out of index")
+                        E = True
                         sys.exit(1)
                     else:
                         print(RAMA[number]) # print an integer from RAM (broken)
@@ -56,8 +58,10 @@ try:
             else:
                 act = k
 except Exception as error:
-    print("Error [P::Exeception]: %s" % error)
-    sys.exit(1)
+    if not E:
+        print("Error [P::Exeception]: %s" % error)
+        sys.exit(1)
 except:
-    print("Error [P::UnknownOrKnown]")
-    sys.exit(1)
+    if not E:
+        print("Error [P::UnknownOrKnown]")
+        sys.exit(1)

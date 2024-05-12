@@ -71,6 +71,8 @@ try:
                 elif act == "RESETTO":
                     if number == 0 and INLOOP:
                         i = LOOPOINT
+                elif act == "ADD":
+                    RAMA.append(number + SETV)
                 else:
                     raise Exception(f"Unknown action [{act}], please check the code and try again, remember, all actions is uppercase written")
             else:

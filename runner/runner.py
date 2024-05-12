@@ -22,7 +22,7 @@ try:
         act = "" # action
         for i, k in enumerate(kw):
             if i % 2 == 1: # 2 % 2 != 0 so then ins't a keyword; 4 % 2 == 0 so then it's a keyword
-                number = int(k, base=2) # the number passed as parameter
+                number = int(k, base=0) # the number passed as parameter
                 if act == "SET":
                     SETV = number # set a number for some actions
                 elif act == "RAM":
@@ -39,12 +39,7 @@ try:
                     if number != 0:
                         sys.exit(1) # Exit of the program, with error
                 elif act == "GET":
-                    if number >= len(RAMA): # Check if is out of index
-                        print("Error [P::RAMIndex]: out of index")
-                        E = True
-                        sys.exit(1)
-                    else:
-                        print(RAMA[number]) # print an integer from RAM (broken)
+                    print(RAMA[number]) # print an integer from RAM (broken)
                 elif act == "oRAM":
                     RAMA.pop(int(number)) # remove an integer from RAM
                 elif act == "PNT":

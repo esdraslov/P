@@ -16,6 +16,8 @@ try:
         RAMA = [] # RAM (arrays is the RAM, because array is directed separeted in RAM)
         SETV = number # Number for some actions (multi-parameters)
         PNTV = "" # The pointer of SETV, RAMA or themself
+        INLOOP = False # The variable to check if it's in a loop or not
+        INIF = False  # The variable used to check if it's in a IF/ELSe statment
         act = "" # action
         for i, k in enumerate(kw):
             if i % 2 == 1: # 2 % 2 != 0 so then ins't a keyword; 4 % 2 == 0 so then it's a keyword
@@ -27,7 +29,14 @@ try:
                 elif act == "PUT":
                     print(SETV) # Aways need to be 00000000 (0) bits as parameter
                 elif act == "EXIT":
-                    sys.exit(0) # Exit successfully
+                    if INLOOP:
+                        INLOOP = False # Exit of the loop
+                    if INIF:
+                        INIF = False # Exit of the if
+                    if not INIF or not INLOOP:
+                        sys.exit(0) # Exit of the program
+                    if number != 0:
+                        sys.exit(1) # Exit of the program, with error
                 elif act == "GET":
                     if number >= len(RAMA): # Check if is out of index
                         print("Error [P::RAMIndex]: out of index")

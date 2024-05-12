@@ -10,14 +10,15 @@ try:
     lines: list = compiled.readlines()
     E = False
 
-    for line in lines:
+    INLOOP = False # The variable to check if it's in a loop or not
+    INIF = False  # The variable used to check if it's in a IF/ELSe 
+    LOOPOINT = 0 # the start of a loop
+    for i, line in enumerate(lines):
         kw = line.split(" ") # Every single keyword
         number = 0b00000000 # P works in 1 byte every number of bits
         RAMA = [] # RAM (arrays is the RAM, because array is directed separeted in RAM)
         SETV = number # Number for some actions (multi-parameters)
         PNTV = "" # The pointer of SETV, RAMA or themself
-        INLOOP = False # The variable to check if it's in a loop or not
-        INIF = False  # The variable used to check if it's in a IF/ELSe statment
         act = "" # action
         for i, k in enumerate(kw):
             if i % 2 == 1: # 2 % 2 != 0 so then ins't a keyword; 4 % 2 == 0 so then it's a keyword
@@ -62,6 +63,14 @@ try:
                         PNTV == number
                 elif act == "kPNT":
                     PNTV = number
+                elif act == "LOOP":
+                    INLOOP =  True
+                    LOOPOINT = i
+                    if number > 5:
+                        i -= 1 # start loop from back to simple make a bigger loop
+                elif act == "RESETTO":
+                    if number == 0 and INLOOP:
+                        i = LOOPOINT
                 else:
                     raise Exception(f"Unknown action [{act}], please check the code and try again, remember, all actions is uppercase written")
             else:
